@@ -1,12 +1,25 @@
 package pratamawijaya.com
 
+import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
+import io.ktor.server.routing.*
 import pratamawijaya.com.plugins.*
 
-fun main() {
-    embeddedServer(Netty, port = 8080, host = "0.0.0.0") {
-        configureRouting()
-        configureSecurity()
-    }.start(wait = true)
+fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
+
+fun Application.module() {
+    configureRouting()
+    configureSerialization()
+}
+
+fun Application.configureRouting() {
+    routing {
+    }
+}
+
+fun Application.configureSerialization() {
+//    install(ContentNegotiation) {
+//        json()
+//    }
 }
